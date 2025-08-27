@@ -1,3 +1,9 @@
+
+# Schedulo - Tech Consultation Booking Platform
+
+<img width="1024" height="1024" alt="ChatGPT Image Aug 28, 2025, 02_30_55 AM" src="https://github.com/user-attachments/assets/c96080fa-2c89-4487-a9a8-09c627cd7aaf" />
+
+
 # ☕ Buy Me Coffee - Tech Consultation Booking Platform
 
 A professional scheduling application for tech consultations with Google Calendar integration and automatic email notifications.
