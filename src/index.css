@@ -23,3 +23,85 @@
 ::-webkit-scrollbar-corner {
   display: none;
 }
+
+
+:root{
+  /* Light theme defaults (existing coffee/tech palette used by Tailwind classes)
+     Keep values minimal; most colors come from Tailwind color tokens. */
+  --bg-gradient-from: #fdf6f0;
+  --bg-gradient-to: #f0f9ff;
+  --page-bg: white;
+  --text-color: #111827;
+  --card-bg: #ffffff;
+  --card-border: #e5e7eb;
+  --accent: #D4A373;
+  --accent-hover: #E0B989;
+  --accent-highlight: #FFDBAC;
+  --btn-text: #111827;
+}
+
+.dark {
+  --bg-gradient-from: #1C1C1E;
+  --bg-gradient-to: #2C2C2E;
+  --page-bg: linear-gradient(135deg, var(--bg-gradient-from) 0%, var(--bg-gradient-to) 50%, #3A2C25 100%);
+  --text-color: #FDFDFD;
+  --body-text: #CCCCCC;
+  --subtle-text: #999999;
+  --card-bg: #2A2A2E;
+  --card-border: #3C3C3E;
+  --accent: #D4A373;
+  --accent-hover: #E0B989;
+  --accent-highlight: #FFDBAC;
+  --btn-text: #1C1C1E;
+}
+
+html,body,#root{
+  height:100%;
+}
+
+@keyframes wave {
+  0% { transform: rotate(0deg); }
+  20% { transform: rotate(-10deg); }
+  40% { transform: rotate(10deg); }
+  60% { transform: rotate(-10deg); }
+  80% { transform: rotate(10deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.animate-wave {
+  display: inline-block;
+  animation: wave 1.5s ease-in-out;
+}
+
+.theme-transition{
+  transition: all 0.5s ease-in-out;
+}
+
+.page-gradient-bg{
+  background: var(--page-bg);
+}
+
+/* Reusable card class so components can adapt to dark variables */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Accent button that respects dark-mode variables */
+.btn-accent {
+  background-color: var(--accent);
+  color: var(--btn-text);
+  transition: all 0.3s ease;
+}
+
+.btn-accent:hover{
+  background-color: var(--accent-hover);
+}
+
+/* Special highlight elements */
+.highlight {
+  background-color: var(--accent-highlight);
+  color: var(--btn-text);
+}

@@ -44,7 +44,7 @@ const TimeSlotPicker = ({ selectedDate, onTimeSelect, onBack }) => {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6 md:p-8">
+    <div className="card rounded-xl shadow-lg p-6 md:p-8">
       <div className="mb-6">
         <button
           onClick={onBack}
@@ -73,14 +73,14 @@ const TimeSlotPicker = ({ selectedDate, onTimeSelect, onBack }) => {
             <button
               key={index}
               onClick={() => !isUnavailable && handleTimeClick(slot.value, slot.display)}
-              disabled={isUnavailable}
-              className={`p-3 rounded-lg border-2 transition-all duration-200 ${
-                isUnavailable
-                  ? 'border-gray-200 bg-gray-100 text-gray-400 cursor-not-allowed'
-                  : isSelected
-                  ? 'border-tech-600 bg-tech-50 text-tech-800'
-                  : 'border-coffee-200 hover:border-coffee-400 hover:bg-coffee-50 text-coffee-800'
-              }`}
+                disabled={isUnavailable}
+                className={`p-3 rounded-lg border-2 transition-all duration-200 ${
+                  isUnavailable
+                    ? 'border-gray-200 bg-gray-100 text-gray-400 cursor-not-allowed'
+                    : isSelected
+                    ? 'border-tech-600 bg-tech-50 text-tech-800'
+                    : 'border-coffee-200 hover:border-coffee-400 hover:bg-coffee-50 text-coffee-800'
+                }`}
             >
               <div className="font-semibold text-center">
                 {slot.display}

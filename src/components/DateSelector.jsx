@@ -42,7 +42,7 @@ const DateSelector = ({ onDateSelect }) => {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6 md:p-8">
+    <div className="card rounded-xl shadow-lg p-6 md:p-8">
       <div className="text-center mb-6">
         <span className="text-3xl mb-3 block">📅</span>
         <h2 className="text-2xl font-bold text-coffee-900 mb-2">
@@ -84,7 +84,7 @@ const DateSelector = ({ onDateSelect }) => {
       </div>
       
       <div className="mt-6 text-center">
-        <p className="text-sm text-coffee-600">
+        <p className="text-sm" style={{ color: 'var(--subtle-text, #6b7280)' }}>
           ☕ Available weekdays only • 30-minute sessions • Online via Google Meet
         </p>
       </div>

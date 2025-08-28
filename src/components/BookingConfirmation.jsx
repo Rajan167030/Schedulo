@@ -126,7 +126,7 @@ const BookingConfirmation = ({
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6 md:p-8 text-center">
+    <div className="card rounded-xl shadow-lg p-6 md:p-8 text-center">
       {/* Success Icon */}
       <div className="mx-auto w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
         <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -162,7 +162,7 @@ const BookingConfirmation = ({
       </div>
 
       {/* Booking Details */}
-      <div className="bg-coffee-50 rounded-lg p-6 mb-8 text-left">
+  <div className="rounded-lg p-6 mb-8 text-left" style={{ background: 'var(--card-bg)', border: '1px solid var(--card-border)' }}>
         <h3 className="text-lg font-semibold text-coffee-900 mb-4 text-center">
           ☕ Consultation Details
         </h3>
@@ -215,7 +215,7 @@ const BookingConfirmation = ({
       </div>
 
       {/* Meeting Info */}
-      <div className="bg-tech-50 rounded-lg p-6 mb-8 text-left">
+  <div className="rounded-lg p-6 mb-8 text-left" style={{ background: 'var(--card-bg)', border: '1px solid var(--card-border)' }}>
         <h4 className="font-semibold text-tech-900 mb-4 text-center flex items-center justify-center">
           <span className="mr-2">🎥</span>
           Meeting Information
@@ -246,7 +246,7 @@ const BookingConfirmation = ({
       </div>
 
       {/* Calendar Actions */}
-      <div className="bg-coffee-50 rounded-lg p-6 mb-8">
+      <div className="rounded-lg p-6 mb-8" style={{ background: 'var(--card-bg)', border: '1px solid var(--card-border)' }}>
         <h4 className="font-semibold text-coffee-900 mb-4 text-center flex items-center justify-center">
           <span className="mr-2">📅</span>
           Add to Your Calendar
@@ -254,7 +254,8 @@ const BookingConfirmation = ({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           <button
             onClick={downloadCalendarFile}
-            className="bg-coffee-600 hover:bg-coffee-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-coffee-500 focus:ring-offset-2"
+            className="btn-accent font-medium py-2 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2"
+            style={{ borderColor: 'var(--card-border)' }}
           >
             📥 Download .ics File
           </button>
@@ -263,7 +264,8 @@ const BookingConfirmation = ({
             href={createGoogleCalendarLink()}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 text-center"
+            className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 text-center"
+            style={{ borderColor: 'var(--card-border)' }}
           >
             📅 Add to Google Calendar
           </a>

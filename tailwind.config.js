@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
@@ -27,6 +28,21 @@ export default {
           700: '#0369a1',
           800: '#075985',
           900: '#0c4a6e',
+        }
+        ,
+        // Dark mode / accent palette provided by the user
+        dm: {
+          pageFrom: '#1C1C1E',
+          pageTo: '#2C2C2E',
+          gradientAltEnd: '#3A2C25',
+          accent: '#D4A373',
+          accentHover: '#E0B989',
+          accentHighlight: '#FFDBAC',
+          heading: '#FDFDFD',
+          body: '#CCCCCC',
+          subtle: '#999999',
+          cardBg: '#2A2A2E',
+          cardBorder: '#3C3C3E'
         }
       }
     },

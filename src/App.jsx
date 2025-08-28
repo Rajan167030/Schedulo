@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DateSelector from './components/DateSelector';
 import TimeSlotPicker from './components/TimeSlotPicker';
 import ClientForm from './components/ClientForm';
@@ -45,9 +45,33 @@ function App() {
     }
   };
 
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    if (darkMode) root.classList.add('dark');
+    else root.classList.remove('dark');
+  }, [darkMode]);
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-coffee-50 to-tech-50">
+    <div className="min-h-screen theme-transition page-gradient-bg">
       <div className="container mx-auto px-4 py-8">
+        <div className="flex justify-end mb-4">
+          <button
+            aria-label="Toggle theme"
+            onClick={() => setDarkMode(!darkMode)}
+            className="flex items-center gap-2 py-2 px-4 rounded-full border-2 focus:outline-none theme-transition"
+            style={{ 
+              borderColor: 'var(--card-border)',
+              backgroundColor: darkMode ? 'var(--card-bg)' : 'var(--accent-highlight)'
+            }}
+          >
+            <span className="text-lg">{darkMode ? '🌙' : '☀️'}</span>
+            <div className="text-sm font-medium" style={{ color: 'var(--text-color)' }}>
+              {darkMode ? 'Dark' : 'Light'}
+            </div>
+          </button>
+        </div>
         {/* Header */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-center mb-4">
@@ -57,10 +81,10 @@ function App() {
             </h1>
             <span className="text-4xl ml-3">💻</span>
           </div>
-          <p className="text-coffee-700 text-lg font-medium">
+          <p className="text-lg font-medium theme-transition" style={{ color: 'var(--body-text)' }}>
             Schedule a tech consultation with a software engineer
           </p>
-          <p className="text-coffee-600 text-sm mt-2">
+          <p className="text-sm mt-2 theme-transition" style={{ color: 'var(--subtle-text)' }}>
             Code reviews • Architecture discussions • Career advice • Technical mentoring
           </p>
         </div>
@@ -71,17 +95,18 @@ function App() {
             {[1, 2, 3, 4].map((step) => (
               <div
                 key={step}
-                className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold ${
-                  step <= currentStep
-                    ? 'bg-tech-600 text-white'
-                    : 'bg-coffee-200 text-coffee-700'
-                }`}
+                className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold theme-transition"
+                style={{
+                  backgroundColor: step <= currentStep ? 'var(--accent)' : 'var(--card-bg)',
+                  color: step <= currentStep ? 'var(--btn-text)' : 'var(--subtle-text)',
+                  border: `2px solid ${step <= currentStep ? 'var(--accent)' : 'var(--card-border)'}`
+                }}
               >
                 {step}
               </div>
             ))}
           </div>
-          <div className="flex justify-between text-xs text-coffee-700">
+          <div className="flex justify-between text-xs theme-transition" style={{ color: 'var(--body-text)' }}>
             <span>Date</span>
             <span>Time</span>
             <span>Details</span>
