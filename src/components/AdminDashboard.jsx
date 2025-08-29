@@ -422,8 +422,8 @@ const AdminDashboard = ({ isOpen, onClose }) => {
                               <div className="space-y-2">
                                 <h4 className="font-medium" style={{ color: 'var(--text-color)' }}>Client Details</h4>
                                 <div className="text-sm space-y-1" style={{ color: 'var(--body-text)' }}>
-                                  <p><strong>Experience:</strong> {booking.clientInfo.experience || 'Not specified'}</p>
-                                  <p><strong>Company:</strong> {booking.clientInfo.company || 'Not specified'}</p>
+                                  <p><strong>Experience:</strong> {booking.client_experience || 'Not specified'}</p>
+                                  <p><strong>Company:</strong> {booking.client_company || 'Not specified'}</p>
                                   <p><strong>Topic:</strong> {booking.topic}</p>
                                 </div>
                               </div>
@@ -433,14 +433,14 @@ const AdminDashboard = ({ isOpen, onClose }) => {
                                 <div className="text-sm space-y-1" style={{ color: 'var(--body-text)' }}>
                                   <p><strong>Meeting Link:</strong></p>
                                   <a 
-                                    href={booking.meetLink} 
+                                    href={booking.meet_link} 
                                     target="_blank" 
                                     rel="noopener noreferrer"
                                     className="text-blue-600 hover:underline break-all"
                                   >
-                                    {booking.meetLink}
+                                    {booking.meet_link}
                                   </a>
-                                  <p><strong>Booked:</strong> {new Date(booking.bookedAt).toLocaleString()}</p>
+                                  <p><strong>Booked:</strong> {new Date(booking.created_at).toLocaleString()}</p>
                                 </div>
                               </div>
                             </div>
