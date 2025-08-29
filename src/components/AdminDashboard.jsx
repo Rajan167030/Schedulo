@@ -32,17 +32,53 @@ const AdminDashboard = ({ isOpen, onClose }) => {
     thisMonth: 0,
     pending: 0
   });
+  const [isLoading, setIsLoading] = useState(false);
+  const [subscription, setSubscription] = useState(null);
 
-  // Load bookings from localStorage on component mount
+  // Load bookings from Supabase on component mount
   useEffect(() => {
-    const savedBookings = localStorage.getItem('coffeeBookings');
-    if (savedBookings) {
-      const parsedBookings = JSON.parse(savedBookings);
-      setBookings(parsedBookings);
-      setFilteredBookings(parsedBookings);
-      calculateStats(parsedBookings);
+    if (isOpen) {
+      loadBookings();
+      setupRealtimeSubscription();
     }
-  }, []);
+
+    return () => {
+      if (subscription) {
+        supabaseBookingService.unsubscribeFromBookings(subscription);
+      }
+    };
+  }, [isOpen]);
+
+  // Load bookings from Supabase
+  const loadBookings = async () => {
+    setIsLoading(true);
+    try {
+      // Initialize database first (in case table doesn't exist)
+      await supabaseBookingService.initializeDatabase();
+      
+      const bookingsData = await supabaseBookingService.getAllBookings();
+      const statsData = await supabaseBookingService.getBookingStats();
+      
+      setBookings(bookingsData);
+      setFilteredBookings(bookingsData);
+      setStats(statsData);
+    } catch (error) {
+      console.error('Error loading bookings:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Setup real-time subscription
+  const setupRealtimeSubscription = () => {
+    const newSubscription = supabaseBookingService.subscribeToBookings((payload) => {
+      console.log('Real-time update received:', payload);
+      // Reload bookings when data changes
+      loadBookings();
+    });
+    
+    setSubscription(newSubscription);
+  };
 
   // Filter bookings based on search and status
   useEffect(() => {
