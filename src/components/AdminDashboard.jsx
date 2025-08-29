@@ -248,8 +248,14 @@ const AdminDashboard = ({ isOpen, onClose }) => {
             </div>
           </div>
 
-          {/* Stats Cards */}
+          {/* Database Setup Section - Show if no bookings found */}
           <div className="p-6">
+            {filteredBookings.length === 0 && !isLoading && (
+              <div className="mb-6">
+                <DatabaseSetup />
+              </div>
+            )}
+
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
               <div className="card rounded-lg p-4 border" style={{ borderColor: 'var(--card-border)' }}>
                 <div className="flex items-center justify-between">
