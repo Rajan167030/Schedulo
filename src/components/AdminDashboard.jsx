@@ -18,6 +18,7 @@ import {
   RefreshCw
 } from 'lucide-react';
 import supabaseBookingService from '../utils/supabaseBookingService';
+import { setupDatabase, createSampleData } from '../utils/setupDatabase';
 
 const AdminDashboard = ({ isOpen, onClose }) => {
   const [bookings, setBookings] = useState([]);
