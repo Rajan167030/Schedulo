@@ -35,6 +35,7 @@ const AdminDashboard = ({ isOpen, onClose }) => {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [subscription, setSubscription] = useState(null);
+  const [dbSetupStatus, setDbSetupStatus] = useState('checking'); // checking, ready, error
 
   // Load bookings from Supabase on component mount
   useEffect(() => {
