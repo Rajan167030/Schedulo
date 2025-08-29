@@ -14,8 +14,10 @@ import {
   Download,
   Search,
   Filter,
-  BarChart3
+  BarChart3,
+  RefreshCw
 } from 'lucide-react';
+import supabaseBookingService from '../utils/supabaseBookingService';
 
 const AdminDashboard = ({ isOpen, onClose }) => {
   const [bookings, setBookings] = useState([]);
