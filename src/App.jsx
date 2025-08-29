@@ -3,6 +3,9 @@ import DateSelector from './components/DateSelector';
 import TimeSlotPicker from './components/TimeSlotPicker';
 import ClientForm from './components/ClientForm';
 import BookingConfirmation from './components/BookingConfirmation';
+import AdminLogin from './components/AdminLogin';
+import AdminDashboard from './components/AdminDashboard';
+import { Settings } from 'lucide-react';
 
 function App() {
   const [currentStep, setCurrentStep] = useState(1);
