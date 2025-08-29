@@ -87,9 +87,9 @@ const AdminDashboard = ({ isOpen, onClose }) => {
     // Search filter
     if (searchTerm) {
       filtered = filtered.filter(booking => 
-        booking.clientInfo.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        booking.clientInfo.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        booking.clientInfo.company?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        booking.client_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        booking.client_email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        booking.client_company?.toLowerCase().includes(searchTerm.toLowerCase()) ||
         booking.topic.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
@@ -98,7 +98,7 @@ const AdminDashboard = ({ isOpen, onClose }) => {
     if (filterStatus !== 'all') {
       const now = new Date();
       filtered = filtered.filter(booking => {
-        const bookingDate = new Date(booking.dateTime);
+        const bookingDate = new Date(booking.date_time);
         switch (filterStatus) {
           case 'upcoming':
             return bookingDate > now;
@@ -114,21 +114,6 @@ const AdminDashboard = ({ isOpen, onClose }) => {
 
     setFilteredBookings(filtered);
   }, [bookings, searchTerm, filterStatus]);
-
-  const calculateStats = (bookingsList) => {
-    const now = new Date();
-    const startOfWeek = new Date(now.getFullYear(), now.getMonth(), now.getDate() - now.getDay());
-    const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
-
-    const stats = {
-      total: bookingsList.length,
-      thisWeek: bookingsList.filter(booking => new Date(booking.dateTime) >= startOfWeek).length,
-      thisMonth: bookingsList.filter(booking => new Date(booking.dateTime) >= startOfMonth).length,
-      pending: bookingsList.filter(booking => new Date(booking.dateTime) > now).length
-    };
-
-    setStats(stats);
-  };
 
   const handleLogout = () => {
     sessionStorage.removeItem('adminAuthenticated');
