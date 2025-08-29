@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import googleServices from '../utils/googleServices';
 import emailService from '../utils/emailService';
-import bookingService from '../utils/bookingService';
+import supabaseBookingService from '../utils/supabaseBookingService';
 
 const BookingConfirmation = ({ 
   selectedDate, 
