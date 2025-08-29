@@ -359,7 +359,7 @@ const AdminDashboard = ({ isOpen, onClose }) => {
               ) : (
                 <div className="max-h-96 overflow-y-auto">
                   {filteredBookings.map((booking) => {
-                    const { date, time } = formatDateTime(booking.dateTime);
+                    const { date, time } = formatDateTime(booking.date_time);
                     const isExpanded = expandedBookings[booking.id];
                     
                     return (
