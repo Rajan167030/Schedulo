@@ -9,10 +9,10 @@ const AdminLogin = ({ isOpen, onClose, onLogin }) => {
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
-  // Default admin credentials (in production, this should be handled securely)
+  // Admin credentials (updated as requested)
   const ADMIN_CREDENTIALS = {
-    username: 'admin',
-    password: 'admin123'
+    username: 'Rajan',
+    password: '123456789'
   };
 
   const handleChange = (e) => {
