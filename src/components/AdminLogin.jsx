@@ -222,8 +222,8 @@ const AdminLogin = ({ isOpen, onClose, onLogin }) => {
           <div className="mt-6 p-4 bg-amber-50 border border-amber-200 rounded-lg">
             <p className="text-amber-800 text-sm font-medium mb-2">Demo Credentials:</p>
             <p className="text-amber-700 text-xs">
-              Username: <code className="bg-amber-100 px-1 rounded">admin</code><br/>
-              Password: <code className="bg-amber-100 px-1 rounded">admin123</code>
+              Username: <code className="bg-amber-100 px-1 rounded">Rajan</code><br/>
+              Password: <code className="bg-amber-100 px-1 rounded">123456789</code>
             </p>
           </div>
         </div>
