@@ -59,6 +59,20 @@ const BookingConfirmation = ({
         setMeetLink(generatedMeetLink);
         setEmailStatus('Sending confirmation emails...');
         
+        // Save booking to localStorage
+        const bookingResult = bookingService.saveBooking({
+          selectedDate,
+          selectedTime,
+          clientInfo,
+          meetLink: generatedMeetLink
+        });
+        
+        if (bookingResult.success) {
+          console.log('Booking saved to admin dashboard');
+        } else {
+          console.error('Failed to save booking:', bookingResult.error);
+        }
+        
         // Send email notifications
         const emailResult = await emailService.sendBookingConfirmation({
           clientInfo,
