@@ -364,15 +364,15 @@ const AdminDashboard = ({ isOpen, onClose }) => {
                     
                     return (
                       <div key={booking.id} className="border-b last:border-b-0" style={{ borderColor: 'var(--card-border)' }}>
-                        <div className="p-4 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                        <div className="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
                           <div className="flex items-center justify-between">
                             <div className="flex-1 grid grid-cols-1 md:grid-cols-4 gap-4">
                               <div>
                                 <p className="font-medium" style={{ color: 'var(--text-color)' }}>
-                                  {booking.clientInfo.name}
+                                  {booking.client_name}
                                 </p>
                                 <p className="text-sm" style={{ color: 'var(--body-text)' }}>
-                                  {booking.clientInfo.email}
+                                  {booking.client_email}
                                 </p>
                               </div>
                               
@@ -386,12 +386,12 @@ const AdminDashboard = ({ isOpen, onClose }) => {
                                   {booking.topic}
                                 </p>
                                 <p className="text-sm" style={{ color: 'var(--body-text)' }}>
-                                  {booking.clientInfo.company || 'No company'}
+                                  {booking.client_company || 'No company'}
                                 </p>
                               </div>
                               
                               <div className="flex items-center justify-between">
-                                {getStatusBadge(booking.dateTime)}
+                                {getStatusBadge(booking.date_time)}
                               </div>
                             </div>
                             
