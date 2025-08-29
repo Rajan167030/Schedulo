@@ -196,6 +196,19 @@ function App() {
           )}
         </div>
       </div>
+
+      {/* Admin Login Modal */}
+      <AdminLogin 
+        isOpen={showAdminLogin}
+        onClose={handleCloseAdminLogin}
+        onLogin={handleAdminLogin}
+      />
+
+      {/* Admin Dashboard Modal */}
+      <AdminDashboard 
+        isOpen={showAdminDashboard}
+        onClose={handleCloseAdminDashboard}
+      />
     </div>
   );
 }
