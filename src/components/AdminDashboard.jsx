@@ -158,27 +158,31 @@ const AdminDashboard = ({ isOpen, onClose }) => {
     }));
   };
 
-  const deleteBooking = (bookingId) => {
-    const updatedBookings = bookings.filter(booking => booking.id !== bookingId);
-    setBookings(updatedBookings);
-    localStorage.setItem('coffeeBookings', JSON.stringify(updatedBookings));
-    calculateStats(updatedBookings);
+  const deleteBooking = async (bookingId) => {
+    const result = await supabaseBookingService.deleteBooking(bookingId);
+    if (result.success) {
+      // Data will be automatically updated via real-time subscription
+      console.log('Booking deleted successfully');
+    } else {
+      console.error('Failed to delete booking:', result.error);
+      alert('Failed to delete booking. Please try again.');
+    }
   };
 
   const exportBookings = () => {
     const csvContent = [
       ['Date', 'Time', 'Client Name', 'Email', 'Company', 'Topic', 'Experience', 'Status'].join(','),
       ...filteredBookings.map(booking => {
-        const { date, time } = formatDateTime(booking.dateTime);
-        const status = new Date(booking.dateTime) > new Date() ? 'Upcoming' : 'Past';
+        const { date, time } = formatDateTime(booking.date_time);
+        const status = new Date(booking.date_time) > new Date() ? 'Upcoming' : 'Past';
         return [
           date,
           time,
-          booking.clientInfo.name,
-          booking.clientInfo.email,
-          booking.clientInfo.company || '',
+          booking.client_name,
+          booking.client_email,
+          booking.client_company || '',
           booking.topic,
-          booking.clientInfo.experience || '',
+          booking.client_experience || '',
           status
         ].join(',');
       })
