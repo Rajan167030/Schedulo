@@ -20,6 +20,11 @@ function App() {
     customTopic: ''
   });
 
+  // Admin state
+  const [showAdminLogin, setShowAdminLogin] = useState(false);
+  const [showAdminDashboard, setShowAdminDashboard] = useState(false);
+  const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false);
+
   const handleDateSelect = (date) => {
     setSelectedDate(date);
     setCurrentStep(2);
@@ -46,6 +51,32 @@ function App() {
     if (currentStep > 1) {
       setCurrentStep(currentStep - 1);
     }
+  };
+
+  // Admin functions
+  const handleAdminClick = () => {
+    // Check if already authenticated
+    const isAuthenticated = sessionStorage.getItem('adminAuthenticated') === 'true';
+    if (isAuthenticated) {
+      setIsAdminAuthenticated(true);
+      setShowAdminDashboard(true);
+    } else {
+      setShowAdminLogin(true);
+    }
+  };
+
+  const handleAdminLogin = () => {
+    setIsAdminAuthenticated(true);
+    setShowAdminLogin(false);
+    setShowAdminDashboard(true);
+  };
+
+  const handleCloseAdminLogin = () => {
+    setShowAdminLogin(false);
+  };
+
+  const handleCloseAdminDashboard = () => {
+    setShowAdminDashboard(false);
   };
 
   const [darkMode, setDarkMode] = useState(false);
