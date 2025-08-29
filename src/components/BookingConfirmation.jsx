@@ -57,10 +57,10 @@ const BookingConfirmation = ({
         }
         
         setMeetLink(generatedMeetLink);
-        setEmailStatus('Sending confirmation emails...');
+        setEmailStatus('Saving booking to database...');
         
-        // Save booking to localStorage
-        const bookingResult = bookingService.saveBooking({
+        // Save booking to Supabase database
+        const bookingResult = await supabaseBookingService.saveBooking({
           selectedDate,
           selectedTime,
           clientInfo,
@@ -68,9 +68,11 @@ const BookingConfirmation = ({
         });
         
         if (bookingResult.success) {
-          console.log('Booking saved to admin dashboard');
+          console.log('Booking saved to Supabase:', bookingResult.booking);
+          setEmailStatus('Sending confirmation emails...');
         } else {
-          console.error('Failed to save booking:', bookingResult.error);
+          console.error('Failed to save booking to Supabase:', bookingResult.error);
+          setEmailStatus('Proceeding with email notifications...');
         }
         
         // Send email notifications
