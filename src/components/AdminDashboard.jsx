@@ -324,6 +324,15 @@ const AdminDashboard = ({ isOpen, onClose }) => {
               </select>
               
               <button
+                onClick={loadBookings}
+                disabled={isLoading}
+                className="flex items-center space-x-2 px-4 py-2 bg-green-600 hover:bg-green-700 disabled:bg-gray-400 text-white rounded-lg transition-colors"
+              >
+                <RefreshCw className={`w-4 h-4 ${isLoading ? 'animate-spin' : ''}`} />
+                <span>{isLoading ? 'Loading...' : 'Refresh'}</span>
+              </button>
+              
+              <button
                 onClick={exportBookings}
                 className="flex items-center space-x-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
               >
